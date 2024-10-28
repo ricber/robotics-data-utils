@@ -17,6 +17,7 @@ Dependencies:
     - sensor_msgs: for ROS2 image message definitions.
     - cv_bridge: for converting ROS images to OpenCV format.
     - OpenCV: for image processing and saving.
+    - ROS2 installation (tested on ROS2 Jazzy and Ubuntu 24.04)
 """
 
 from rosbags.rosbag2 import Reader
@@ -27,7 +28,14 @@ import cv2
 import os
 import argparse
 
-def extract_images_from_bag(bag_path: str, images_topic: str, output_dir: str, time_start: float = 0.0, time_end: float = -1.0, every_k: int = 1) -> None:
+
+def extract_images_from_bag(bag_path: str,
+                            images_topic: str,
+                            output_dir: str,
+                            time_start: float = 0.0,
+                            time_end: float = -1.0,
+                            every_k: int = 1,
+                            rotate_90: bool = False) -> None:
     """
     Extracts images from a specified topic of a ROS2 bag file and saves them in an output directory.
 
@@ -38,8 +46,9 @@ def extract_images_from_bag(bag_path: str, images_topic: str, output_dir: str, t
         time_start (float): Earliest timestamp for images to be considered (default: 0.0).
         time_end (float): Latest timestamp for images to be considered (-1.0 means no end limit).
         every_k (int): Frequency for saving images, i.e., every k-th image (default: 1).
+        rotate_90 (bool): If True, rotates each image 90 degrees clockwise before saving (default: False).
     """
-    i = 0
+    i = -1  # in the first comparison i must be 0
     with Reader(bag_path) as reader:
         for connection, _, rawdata in reader.messages():
             if connection.topic == images_topic:
@@ -53,13 +62,15 @@ def extract_images_from_bag(bag_path: str, images_topic: str, output_dir: str, t
                 else:
                     if not (time_start <= timestamp <= time_end):
                         continue
-                
+
                 i += 1
-                if i % every_k != 1:
+                if i % every_k:
                     continue
 
                 bgr_img = CvBridge().imgmsg_to_cv2(img_msg=msg, desired_encoding="bgr8")
-                bgr_img = cv2.rotate(bgr_img, cv2.ROTATE_90_CLOCKWISE)
+
+                if rotate_90:
+                    bgr_img = cv2.rotate(bgr_img, cv2.ROTATE_90_CLOCKWISE)
 
                 # Create output directory if it doesn't exist
                 if not os.path.exists(output_dir):
@@ -70,6 +81,7 @@ def extract_images_from_bag(bag_path: str, images_topic: str, output_dir: str, t
                 cv2.imwrite(output_path, bgr_img)
                 print(f"Saved image: {output_path}")
 
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Extract images from a ROS2 bag file topic and save them to a specified directory.")
     parser.add_argument("bag_path", type=str, help="Path to the ROS2 bag file.")
@@ -78,5 +90,16 @@ if __name__ == "__main__":
     parser.add_argument("--time_start", type=float, default=0.0, help="Start time for extraction (default: 0.0).")
     parser.add_argument("--time_end", type=float, default=-1.0, help="End time for extraction (-1.0 means no limit).")
     parser.add_argument("--every_k", type=int, default=1, help="Frequency to save images, e.g., every k-th image (default: 1).")
+    parser.add_argument("--rotate_90", action="store_true", help="If set, rotates each image 90 degrees clockwise before saving.")
 
-    args = parser.parse_args
+    args = parser.parse_args()
+
+    extract_images_from_bag(
+        bag_path=args.bag_path,
+        images_topic=args.images_topic,
+        output_dir=args.output_dir,
+        time_start=args.time_start,
+        time_end=args.time_end,
+        every_k=args.every_k,
+        rotate_90=args.rotate_90
+    )
