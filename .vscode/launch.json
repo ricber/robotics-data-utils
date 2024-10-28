@@ -1,0 +1,23 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "ROS2 Bag Extract Images",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "args": [
+                "/home/rbertoglio/Nextcloud/_ROMEA/Projets en cours/Innodura/Agrivia/Données/record_human_0_16_09_2024/",
+                "/alpo/camera/image_synchro",
+                "/home/rbertoglio/datasets/Agrivia/record_human_0_16_09_2024/"
+            ],
+            "justMyCode": false
+        }
+    ]
+}
+
+  
