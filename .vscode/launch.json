@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "ROS2 Bag Extract Images",
+            "name": "ros2_bag_extract_images.py",
             "type": "debugpy",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
             "args": [
-                "/home/rbertoglio/Nextcloud/_ROMEA/Projets en cours/Innodura/Agrivia/Données/record_human_0_16_09_2024/",
+                "/home/rbertoglio/Nextcloud/_ROMEA/Projets en cours/Innodura/Agrivia/Données/2024_bag/record_4_28_10_2024/",
                 "/alpo/camera/image_synchro",
-                "/home/rbertoglio/datasets/Agrivia/record_human_0_16_09_2024/"
+                "/home/rbertoglio/datasets/Agrivia/raw/record_4_28_10_2024/"
             ],
             "justMyCode": false
-        }
+        },
     ]
 }
 
