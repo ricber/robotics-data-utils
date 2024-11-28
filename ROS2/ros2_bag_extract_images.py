@@ -5,19 +5,13 @@ This script uses the `argparse` library to take command-line arguments for input
 and optional parameters for time filtering and frequency of image extraction. Images are saved in PNG format, 
 with their filenames based on their timestamps.
 
+A ROS2 installation is a required dependency (tested on ROS2 Jazzy and Ubuntu 24.04).
+
 Usage:
     python extract_images.py <bag_path> <images_topic> <output_dir> [--time_start TIME_START] [--time_end TIME_END] [--every_k EVERY_K]
 
 Example:
     python extract_images.py /path/to/bag /topic/to/extract /output/dir --time_start 0 --time_end -1 --every_k 10
-
-Dependencies:
-    - rosbags: for reading ROS2 bag files.
-    - rclpy: for message deserialization.
-    - sensor_msgs: for ROS2 image message definitions.
-    - cv_bridge: for converting ROS images to OpenCV format.
-    - OpenCV: for image processing and saving.
-    - ROS2 installation (tested on ROS2 Jazzy and Ubuntu 24.04)
 """
 
 from rosbags.rosbag2 import Reader
