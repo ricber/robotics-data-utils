@@ -17,6 +17,15 @@
             ],
             "justMyCode": false
         },
+        {
+            "name": "split_rellis3d_dataset.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/datasets/split_rellis3d_dataset.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": []
+        }
     ]
 }
 
