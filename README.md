@@ -10,4 +10,5 @@ robotics-data-utils
 │   | ros2_bag_extract_images.py: Script to extract RGB images from a ROS2 bag
 └─── datasets
 │   | split_rellis3d_dataset.py: This script organizes the Rellis_3D dataset by splitting it into training, testing, and validation subsets based on predefined .lst files
+|   | remap_rellis3d_labels.py: This script remaps pixel-level labels using a specified mapping from an external YAML file, combining or reassigning classes
 ```

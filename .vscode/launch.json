@@ -25,6 +25,15 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": []
+        },
+        {
+            "name": "remap_rellis3d_labels.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/datasets/remap_rellis3d_labels.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": []
         }
     ]
 }
