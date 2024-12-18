@@ -3,6 +3,7 @@ import shutil
 
 # Define paths
 dataset_dir = "/home/rbertoglio/datasets/Rellis_3D"
+labels_dir_name = "Rellis_3D_pylon_camera_node_label_id_remapped"
 split_dir = os.path.join(dataset_dir, "Rellis_3D_image_split")
 output_dirs = {
     "train": os.path.join(dataset_dir, "Rellis_3D_train"),
@@ -13,7 +14,7 @@ output_dirs = {
 # Ensure output directories exist
 for split, out_dir in output_dirs.items():
     os.makedirs(os.path.join(out_dir, "Rellis_3D_pylon_camera_node"), exist_ok=True)
-    os.makedirs(os.path.join(out_dir, "Rellis_3D_pylon_camera_node_label_id"), exist_ok=True)
+    os.makedirs(os.path.join(out_dir, labels_dir_name), exist_ok=True)
 
 
 # Function to process each split
@@ -33,11 +34,11 @@ def process_split(split_name, lst_file):
 
         # Define source paths
         src_image = os.path.join(dataset_dir, "Rellis_3D_pylon_camera_node", "Rellis-3D", image_path)
-        src_label = os.path.join(dataset_dir, "Rellis_3D_pylon_camera_node_label_id", "Rellis-3D", label_path)
+        src_label = os.path.join(dataset_dir, labels_dir_name, "Rellis-3D", label_path)
 
         # Define destination base paths
         dest_image_base = os.path.join(output_dirs[split_name], "Rellis_3D_pylon_camera_node", "Rellis-3D")
-        dest_label_base = os.path.join(output_dirs[split_name], "Rellis_3D_pylon_camera_node_label_id", "Rellis-3D")
+        dest_label_base = os.path.join(output_dirs[split_name], labels_dir_name, "Rellis-3D")
 
         # Extract the relative paths for image and label
         rel_image_path = os.path.dirname(image_path)  # Relative directory of the image
