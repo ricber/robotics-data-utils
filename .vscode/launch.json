@@ -1,7 +1,4 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
@@ -27,13 +24,18 @@
             "args": []
         },
         {
-            "name": "remap_rellis3d_labels.py",
+            "name": "remap_grayscale_labels.py",
             "type": "debugpy",
             "request": "launch",
-            "program": "${workspaceFolder}/datasets/remap_rellis3d_labels.py",
+            "program": "${workspaceFolder}/datasets/remap_grayscale_labels.py",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "args": []
+            "args": [
+                "/home/rbertoglio/datasets/Rellis_3D/",
+                "/home/rbertoglio/datasets/Rellis_3D_remapped/",
+                "/home/rbertoglio/datasets/Rellis_3D/mapping.yaml",
+                "--subdirs", "Rellis_3D_pylon_camera_node_label_id"
+            ]
         },
         {
             "name": "rgb_to_grayscale_labels.py",
