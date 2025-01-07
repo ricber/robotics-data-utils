@@ -8,7 +8,7 @@
             "name": "ros2_bag_extract_images.py",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
+            "program": "${workspaceFolder}/ROS2/ros2_bag_extract_images.py",
             "console": "integratedTerminal",
             "args": [
                 "/home/rbertoglio/Nextcloud/_ROMEA/Projets en cours/Innodura/Agrivia/Données/2024_bag/record_4_28_10_2024/",
@@ -34,7 +34,20 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": []
-        }
+        },
+        {
+            "name": "rgb_to_grayscale_labels.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/datasets/rgb_to_grayscale_labels.py",
+            "console": "integratedTerminal",
+            "args": [
+                "/home/rbertoglio/datasets/RUGD/RUGD_annotations/",
+                "/home/rbertoglio/datasets/RUGD/RUGD_annotations/RUGD_annotation-colormap.txt",
+                "/home/rbertoglio/datasets/RUGD/RUGD_annotations_grayscale/"               
+            ],
+            "justMyCode": false
+        },
     ]
 }
 
