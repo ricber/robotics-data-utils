@@ -66,7 +66,7 @@ def process_images(input_dir, subdirs, output_dir, mapping):
 
         for root, _, files in tqdm(os.walk(subdir_path), desc=f"Processing directories in {subdir_path}"):
             for file in tqdm(files, desc=f"Processing files in {root}"):
-                if file.endswith(".png"):
+                if file.lower().endswith(".png"):
                     input_image_path = os.path.join(root, file)
                     relative_path = os.path.relpath(root, input_dir)
                     output_image_path = os.path.join(output_dir, relative_path, file)

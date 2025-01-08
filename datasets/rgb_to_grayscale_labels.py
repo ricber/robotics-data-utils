@@ -90,7 +90,7 @@ def process_directory(input_dir, colormap, output_dir):
     files_to_process = []
     for root, _, files in os.walk(input_dir):
         for file in files:
-            if file.endswith('.png'):
+            if file.lower().endswith('.png'):
                 files_to_process.append(os.path.join(root, file))
 
     for input_path in tqdm(files_to_process, desc="Processing images"):

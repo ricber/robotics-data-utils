@@ -31,10 +31,10 @@
             "console": "integratedTerminal",
             "justMyCode": true,
             "args": [
-                "/home/rbertoglio/datasets/Rellis_3D/",
-                "/home/rbertoglio/datasets/Rellis_3D_remapped/",
-                "/home/rbertoglio/datasets/Rellis_3D/mapping.yaml",
-                "--subdirs", "Rellis_3D_pylon_camera_node_label_id"
+                "/home/rbertoglio/datasets/RUGD/", // "/home/rbertoglio/datasets/Rellis_3D/",
+                "/home/rbertoglio/datasets/RUGD_remapped/", // "/home/rbertoglio/datasets/Rellis_3D_remapped/"
+                "/home/rbertoglio/datasets/RUGD/mapping.yaml", // "/home/rbertoglio/datasets/Rellis_3D/mapping.yaml",
+                "--subdirs", "RUGD_annotations_grayscale" // "Rellis_3D_pylon_camera_node_label_id"
             ]
         },
         {
