@@ -57,9 +57,9 @@
             "program": "${workspaceFolder}/pointclouds/o3d_viz.py",
             "console": "integratedTerminal",
             "args": [
-                "--ply", "/home/rbertoglio/cnn_row_detection/data/pointclouds/2024-08-12-montoldre_furrow_camera/combined_cloud.ply",
+                "--ply", "/home/rbertoglio/cnn_row_detection/data/pointclouds/2024-08-12-montoldre_furrow_camera/combined_cloud_v4.ply",
                 // "--csv", "/home/rbertoglio/cnn_row_detection/data/plants_gt/2024-08-12-montoldre_furrow_camera/haricots_7_3_enu.csv",
-                "--mode", "editing",
+                "--mode", "editing", // "visualizer",
                 "--fixed_z", "0.3",
                 "--point_size", "4.0",
                 // "--show_frame",      
